@@ -1,24 +1,12 @@
 import React from "react";
+import { Button, Progress } from "../components";
 
 export const StepFour = () => {
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2 _active"></div>
-              <div className="indicator__unit indicator__unit-3 _active"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <Progress active={2}/>
           <div className="question">
             <h2>4. Занимательный вопрос</h2>
             <ul className="level-variants">
@@ -43,9 +31,7 @@ export const StepFour = () => {
                 <label htmlFor="variant-5">5</label>
               </li>
             </ul>
-            <button type="button" id="next-btn" disabled>
-              Далее
-            </button>
+            <Button type="button" disabled id="next-btn" text="Далее"/>
           </div>
         </div>
       </div>

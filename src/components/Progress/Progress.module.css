@@ -1,0 +1,11 @@
+.indicator {
+    color: red;
+}
+
+.indicator__description {
+    color: blue;
+}
+
+.indicator__value {
+    color: green;
+}

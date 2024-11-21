@@ -1,8 +1,6 @@
-import React from 'react'
-
-export const Button = ({text}) => {
+export const Button = ({text, type="button", disabled}) => {
   return (
-    <button disabled type="submit" id="next-btn" >
+    <button type={type} id="next-btn" disabled={disabled} >
         {text}
     </button>
   )

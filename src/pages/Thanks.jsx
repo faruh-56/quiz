@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../components";
 
 export const Thanks = () => {
   return (
@@ -8,9 +9,7 @@ export const Thanks = () => {
           <img src="./img/bell.png" alt="bell" />
           <h1>Спасибо за прохождение опроса!</h1>
           <p>Получи свою скидку по ссылке ниже или другое блаблабла</p>
-          <button type="button" id="get-link">
-            Получить ссылку
-          </button>
+          <Button text="Получить ссылку" id="get-link"/>
         </div>
       </div>
     </div>
