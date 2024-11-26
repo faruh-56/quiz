@@ -4,6 +4,7 @@ import './Progress.module.css'
 
 export const Progress = ({ active }) => {
   const steps = [0, 1, 2, 3]
+  const percent = 100 / steps.length;
 
   return (
     <div className="indicator">
@@ -23,6 +24,12 @@ export const Progress = ({ active }) => {
           ></div>
         ))}
       </div>
+      <div className="indicator_text">
+        <span className="indicator_description">
+        Процесс прохождения:
+        </span>
+        <span className="indicator__value">{percent}%</span>       
+      </div> 
     </div>
   );
 };
