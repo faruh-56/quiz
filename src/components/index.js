@@ -1,4 +1,4 @@
-export { Button } from "./Button/Button.jsx";
-export { Input } from "./Input/Input.jsx";
-export { Span } from "./Span/Span.jsx";
-export { Progress } from "./Progress/Progress.jsx";
+export { Button } from "./Button";
+export { Input } from "./Input";
+export { Progress } from "./Progress";
+export { Option } from "./Option"

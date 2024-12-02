@@ -12,7 +12,16 @@ body {
   font-family: "TT Hoves";
   font-size: 16px;
   height: 100vh;
+}
+
+body.light {
+  background-color: white;
   color: #22222a;
+}
+
+body.dark {
+  background-color: #22222a;
+  color: white;
 }
 
 #root,

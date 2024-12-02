@@ -1,24 +1,19 @@
-import { Button, Input } from "../components";
+import { Button, Option } from "../components";
 
 export const StepTwo = () => {
+
+  const answers = ["Ваш ответ 1", "Ваш ответ 2", "Ваш ответ 3", "Ваш ответ 4"]
+
   return (
     <div className="variants-quiz">
       <div className="question">
         <h2>2. Занимательный вопрос</h2>
         <ul className="variants">
-          {/* Вынести массив из JSX */}
-          {['Ваш ответ', 'Ваш ответ', 'Ваш ответ', 'Ваш ответ'].map((ans, index) => {
-            return <li className="variant-wrapper" key={index}>
-              <Input
-                type="radio"
-                name={`variant-${index}`}
-                id={`variant-${index}`}
-              />
-              <label htmlFor={`variant-${index}`}>{ans}</label>
-            </li>
-          })}
+          {answers.map((answer, index) => (
+            <Option key={index} text={answer} name={`variant-${index + 1}`} id={`variant-${index + 1}`} />
+          ))}
         </ul>
-        <Button type="button" id="next-btn" text="Далее" disabled />
+        <Button type="button" id="next-btn" text="Далее" disabled step="/step/3"/>
       </div>
     </div>
   );

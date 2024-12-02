@@ -1,8 +1,12 @@
-export const Option = ({id, answer}) => {
+export const Option = ({text, name, id, img=false, src, alt }) => {
+  
   return (
-      <li className="variant-wrapper" key={id}>
-      <input required type="radio" name={`variant-${id}`} id={`variant-${id}`} />
-      <label htmlFor={`variant-${id}`}>{answer}</label>
-    </li>
+        <li className="variant-wrapper">
+            <input required type="radio" name={name} id={id} />
+            <label htmlFor={id}>
+                {img && src && <img src={src} alt={alt} />}
+                {text}
+            </label>
+        </li>
   )
 }

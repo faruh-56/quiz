@@ -6,38 +6,55 @@ import { Button, Input } from '../components';
 export const Welcome = () => {
   const navigate = useNavigate()
 
-  const [isDisabled, setIsDisabled] = useState(true)
+  const [isNameValid, setIsNameValid] = useState(false)
+  const [isTelValid, setIsTelValid] = useState(false)
+
+  const isDisabled = !(isNameValid && isTelValid)
+  console.log(isDisabled);
+
 
   const onNameInputHandler = e => {
     const value = e.target.value.trim()
 
-    // проверка чтобы количество символов в имени было больше или равно 3
-    if (value.length >= 3) {
-      setIsDisabled(false)
+    if (value.length < 3) {
+      setIsNameValid(false)
       return
     }
 
-    if (value.length < 3) {
-      setIsDisabled(true)
-      return
-    }
+    setIsNameValid(true)
+
   }
 
-  // Функция обработчик для ввода телефона должна быть здесь
-  // Функция обработчик для onSubmit должна быть здесь
+  const onTelInputHandler = e => {
+    const value = e.target.value.trim()
+
+    if (value.length !== 13) {
+      setIsTelValid(false)
+      return
+    }
+
+    if (value.slice(0, 4) !== '+998') {
+      setIsTelValid(false)
+      return
+    }
+
+    setIsTelValid(true)
+  }
+
+  const onSubmitHandler = e => {
+    e.preventDefault()
+    navigate('/step/1')
+  }
 
   return (
     <div className="container">
       <div className="wrapper">
         <div className="welcome">
           <h1>Добро пожаловать в квиз от лучшего учебного центра</h1>
-          {/* Вынести функцию из JSX */}
-          <form className="welcome__form" onSubmit={(e) => {
-            e.preventDefault()
-            navigate('/step/1')
-          }}>
+          <form className="welcome__form" onSubmit={onSubmitHandler}>
             <Input label="Ваше имя" type="text" name="username" id="username" placeholder="Ваш ответ" onInput={onNameInputHandler} />
-            {/* <Input label="Ваш номер" type="tel" name="phone" id="phone" placeholder="+998 9- --- -- -- " pattern="^(?:\+998)?(?:\d{2})?(?:\d{7})$" ref={telRef} /> */}
+            <Input label="Ваш номер" type="tel" name="phone" id="phone" placeholder="+998 XX XXX XX XX" pattern="^(?:\+998)?(?:\d{2})?(?:\d{7})$" onInput={onTelInputHandler} />
+
             <Button type={'submit'} id={'next-btn'} text='Далее' disabled={isDisabled} />
           </form>
         </div>

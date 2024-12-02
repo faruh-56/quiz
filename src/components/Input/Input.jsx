@@ -1,6 +1,6 @@
-import { forwardRef } from "react"
-
 export const Input = ({ label, type, name, id, placeholder, errorMessage, ...props }) => {
+
+
   return (
     <label className="input-wrapper" htmlFor={id}>
       {label}

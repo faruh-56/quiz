@@ -1,43 +1,43 @@
-import { Button, Input } from "../components";
+import { Button, Progress, Option} from "../components";
 
 export const StepThree = () => {
-  return (
-    <div className="emoji-quiz">
-      <div className="question">
-        <h2>3. Занимательный вопрос</h2>
-        <ul className="emoji-variants">
-          {
-            // TODO: Вынести массив из JSX
-            [
-              {
-                label: 'Ваш ответ 1',
-                img: 'laugh.png'
-              },
-              {
-                label: 'Ваш ответ 2',
-                img: 'hearts.png'
-              }, {
-                label: 'Ваш ответ 3',
-                img: 'smirk.png'
-              }, {
-                label: 'Ваш ответ 4',
-                img: 'fright.png'
-              }
-            ].map(({ label, img }, index) => {
-              const alt = img.split('.')[0]
-              const src = '/img/' + img
-              return <li className="variant-wrapper" key={index}>
-                <Input type="radio" name="variant" id={`variant-${index}`} />
-                <label htmlFor={`variant-${index}`}>
-                  <img src={src} alt={alt} />
-                  <p>{label}</p>
-                </label>
-              </li>
-            })
-          }
-        </ul>
-        <Button type="button" id="next-btn" text="Далее" disabled />
-      </div>
-    </div>
+
+  const answers = [
+    {      
+      answer: "Ваш ответ 1",
+      imgSrc: "/img/laugh.png",
+      imgAlt: "laugh"
+    }, 
+    {      
+      answer: "Ваш ответ 2",
+      imgSrc: "/img/hearts.png",
+      imgAlt: "hearts"
+    }, 
+    {     
+      answer: "Ваш ответ 3",
+      imgSrc: "/img/smirk.png",
+      imgAlt: "smirk"
+    }, 
+    {      
+      answer: "Ваш ответ 4",
+      imgSrc: "/img/fright.png",
+      imgAlt: "fright"
+    },    
+  ]
+  
+  return (   
+        <div className="emoji-quiz">
+           <Progress activeStep={3} />
+          <form className="question"> <br/><br/>
+            <h2>3. Занимательный вопрос</h2>
+            <ul className="emoji-variants">
+              {answers.map((answer, index) => (
+                <Option key={index} text={<p>{answer.answer}</p>} img src={answer.imgSrc} alt={answer.imgAlt} name={`variant-${index + 1}`} id={`variant-${index + 1}`} />
+              ))}
+            </ul>   
+           
+            <Button step="/step/4" />
+          </form>
+        </div>      
   );
 };
