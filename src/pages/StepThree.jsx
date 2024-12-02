@@ -1,47 +1,42 @@
-import React from "react";
-import { Button, Progress } from "../components";
+import { Button, Input } from "../components";
 
 export const StepThree = () => {
   return (
-    <div className="container">
-      <div className="wrapper">
-        <div className="emoji-quiz">
-          <Progress active={1}/>
-          <div className="question">
-            <h2>3. Занимательный вопрос</h2>
-            <ul className="emoji-variants">
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-1" />
-                <label htmlFor="variant-1">
-                  <img src="./img/laugh.png" alt="laugh" />
-                  <p>Ваш ответ 1</p>
+    <div className="emoji-quiz">
+      <div className="question">
+        <h2>3. Занимательный вопрос</h2>
+        <ul className="emoji-variants">
+          {
+            // TODO: Вынести массив из JSX
+            [
+              {
+                label: 'Ваш ответ 1',
+                img: 'laugh.png'
+              },
+              {
+                label: 'Ваш ответ 2',
+                img: 'hearts.png'
+              }, {
+                label: 'Ваш ответ 3',
+                img: 'smirk.png'
+              }, {
+                label: 'Ваш ответ 4',
+                img: 'fright.png'
+              }
+            ].map(({ label, img }, index) => {
+              const alt = img.split('.')[0]
+              const src = '/img/' + img
+              return <li className="variant-wrapper" key={index}>
+                <Input type="radio" name="variant" id={`variant-${index}`} />
+                <label htmlFor={`variant-${index}`}>
+                  <img src={src} alt={alt} />
+                  <p>{label}</p>
                 </label>
               </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-2" />
-                <label htmlFor="variant-2">
-                  <img src="./img/hearts.png" alt="hearts" />
-                  <p>Ваш ответ 2</p>
-                </label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-3" />
-                <label htmlFor="variant-3">
-                  <img src="./img/smirk.png" alt="smirk" />
-                  <p>Ваш ответ 3</p>
-                </label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-4" />
-                <label htmlFor="variant-4">
-                  <img src="./img/fright.png" alt="fright" />
-                  <p>Ваш ответ 4</p>
-                </label>
-              </li>
-            </ul>
-            <Button type="button" disabled id="next-btn" text="Далее"/>
-          </div>
-        </div>
+            })
+          }
+        </ul>
+        <Button type="button" id="next-btn" text="Далее" disabled />
       </div>
     </div>
   );

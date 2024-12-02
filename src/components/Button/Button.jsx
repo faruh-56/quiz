@@ -1,8 +1,7 @@
-export const Button = ({text, type="button", disabled}) => {
+export const Button = ({ text, type, id, ...props }) => {
   return (
-    <button type={type} id="next-btn" disabled={disabled} >
-        {text}
+    <button type={type} id={id} {...props}>
+      {text}
     </button>
-  )
-}
- 
+  );
+};

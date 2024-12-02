@@ -1,35 +1,32 @@
-import React from 'react'
+import classNames from 'classnames';
 
-import './Progress.module.css'
+export const Progress = ({ steps, activeStep }) => {
 
-export const Progress = ({ active }) => {
-  const steps = [0, 1, 2, 3]
-  const percent = 100 / steps.length;
+  const progress = (100 / steps) * (activeStep - 1) + '%'
 
   return (
     <div className="indicator">
       <div className="indicator__text">
-        <span className="indicator__description">
-          Скидка за прохождение опроса:
+        <span className="indicator__description">Прогресс прохождения:</span>
+        <span className="indicator__value">
+          {progress}
         </span>
-        <span className="indicator__value">15%</span>
       </div>
       <div className="indicator__progressbar">
-        {steps.map((index) => (
-          <div
-            key={index}
-            className={`indicator__unit indicator__unit-${index +1} ${
-              index <= active ? '_active' : ''
-            }`}
-          ></div>
-        ))}
+        {Array(steps)
+          .fill("0")
+          .map((_, index) => (
+            <div
+              className={classNames({
+                indicator__unit: true, 
+                [`indicator__unit-${index + 1}`]: true,
+                _active: index < activeStep,
+                _current: index === activeStep - 1
+              })}
+              key={index}
+            />
+          ))}
       </div>
-      <div className="indicator_text">
-        <span className="indicator_description">
-        Процесс прохождения:
-        </span>
-        <span className="indicator__value">{percent}%</span>       
-      </div> 
     </div>
   );
 };

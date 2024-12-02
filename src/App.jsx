@@ -1,51 +1,33 @@
 import React from "react";
+import { Routes, Route } from "react-router";
 
-import { Welcome, StepOne, StepTwo, StepThree, StepFour, Thanks } from "./pages";
+import {
+  Welcome,
+  StepOne,
+  StepTwo,
+  StepThree,
+  StepFour,
+  Step,
+  Thanks,
+} from "./pages";
 
 import "./App.css";
 import "./styles/main.css";
 
-
-
-
 export const App = () => {
   return (
-    <div className="App">
-      <Welcome/>
-      <StepOne/>
-      <StepTwo/>
-      <StepThree/>
-      <StepFour/>
-      <Thanks/> 
-    </div>
+    <>
+      <Routes>
+        <Route index element={<Welcome />} />
+          <Route path="/step" element={<Step />}>
+            <Route index path="1" element={<StepOne />} />
+            <Route path="2" element={<StepTwo />} />
+            <Route path="3" element={<StepThree />} />
+            <Route path="4" element={<StepFour />} />
+          </Route>
+
+        <Route path="/thanks" element={<Thanks />} />
+      </Routes>
+    </>
   );
-
-  
-  // let date = new Date()
-
-  // let hours = date.getHours().toString().padStart(2, 0)
-  // let minutes = date.getMinutes().toString().padStart(2, 0)
-  // let seconds = date.getSeconds().toString().padStart(2, 0)
-
-  // const [time, setTime] = useState(`${hours}:${minutes}:${seconds}`)
-
-  // useEffect(() => {
-//   const intervalId = setInterval(() => {
-//     const date = new Date();
-
-//     const hours = date.getHours().toString().padStart(2, '0');
-//     const minutes = date.getMinutes().toString().padStart(2, '0');
-//     const seconds = date.getSeconds().toString().padStart(2, '0');
-
-//     const currentTime = `${hours}:${minutes}:${seconds}`;
-//     console.log(currentTime); // Логируем текущее время
-//     setTime(currentTime);
-//   }, 500);
-
-//   return () => {
-//     clearInterval(intervalId);
-//   };
-// }, []);
-
- 
 };

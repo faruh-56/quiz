@@ -1,14 +1,16 @@
-export const Input = ({label, type='text', id, placeholder, errorMessage, pattern}) => {
+import { forwardRef } from "react"
+
+export const Input = ({ label, type, name, id, placeholder, errorMessage, ...props }) => {
   return (
-    <label className="input-wrapper" htmlFor="username">
+    <label className="input-wrapper" htmlFor={id}>
       {label}
       <input
-        required
         type={type}
-        name={id}
+        name={name}
         id={id}
         placeholder={placeholder}
-        pattern={pattern}
+        required
+        {...props}
       />
       <span id="error-message">{errorMessage}</span>
     </label>
